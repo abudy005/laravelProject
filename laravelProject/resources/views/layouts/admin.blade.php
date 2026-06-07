@@ -85,7 +85,7 @@
         </a>
       </li>
       <li>
-        <a class="nav-link {{ request()->routeIs('admin.orders.*') ? 'active' : '' }}" href="#">
+        <a class="nav-link {{ request()->routeIs('admin.orders.*') ? 'active' : '' }}" href="{{ route('admin.orders.index') }}">
           <i class="ti ti-clipboard-check"></i><span class="nav-text">Orders</span>
         </a>
       </li>
