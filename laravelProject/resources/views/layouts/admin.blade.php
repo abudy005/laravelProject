@@ -75,12 +75,12 @@
         </a>
       </li>
       <li>
-        <a class="nav-link {{ request()->routeIs('admin.categories.*') ? 'active' : '' }}" href="#">
+        <a class="nav-link {{ request()->routeIs('admin.categories.*') ? 'active' : '' }}" href="{{ route('admin.categories.index') }}">
           <i class="ti ti-box-seam"></i><span class="nav-text">Categories</span>
         </a>
       </li>
       <li>
-        <a class="nav-link {{ request()->routeIs('admin.product.*') ? 'active' : '' }}" href="#">
+        <a class="nav-link {{ request()->routeIs('admin.product.*') ? 'active' : '' }}" href="{{ route('admin.product.index') }}">
           <i class="ti ti-shopping-cart"></i><span class="nav-text">Products</span>
         </a>
       </li>
