@@ -10,7 +10,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::get('/cart', fn () => redirect('/'))->name('cart.index');
-Route::get('/category/{slug}', fn ($slug) => redirect('/'))->name('category');
+Route::get('/category/{category:slug}', [HomeController::class, 'category'])->name('category');
+Route::get('/product/{product}', [HomeController::class, 'product'])->name('product');
 
 // Auth
 Route::controller(AuthController::class)->group(function () {
