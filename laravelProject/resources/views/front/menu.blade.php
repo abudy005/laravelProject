@@ -11,23 +11,35 @@
                         <ul class="menu-vertical sf-arrows">
                             @forelse ($categories ?? [] as $category)
                                 <li>
-                                    <a href="{{ route('category', $category->slug) }}">{{ $category->title }}</a>
                                     @if ($category->children->isNotEmpty())
-                                        <ul>
-                                            @foreach ($category->children as $child)
-                                                <li><a href="{{ route('category', $child->slug) }}">{{ $child->title }}</a></li>
-                                            @endforeach
-                                        </ul>
+                                        <a href="#" data-toggle="collapse" data-target="#cat-{{ $category->id }}"
+                                           role="button" aria-expanded="false"
+                                           aria-controls="cat-{{ $category->id }}" class="sf-with-ul">
+                                            {{ $category->title }}
+                                        </a>
+                                        <div class="collapse" id="cat-{{ $category->id }}">
+                                            <ul>
+                                                @foreach ($category->children as $child)
+                                                    <li>
+                                                        <a href="{{ route('category', $child->slug) }}">
+                                                            {{ $child->title }}
+                                                        </a>
+                                                    </li>
+                                                @endforeach
+                                            </ul>
+                                        </div>
+                                    @else
+                                        <a href="{{ route('category', $category->slug) }}">{{ $category->title }}</a>
                                     @endif
                                 </li>
                             @empty
                                 <li><a href="#">No categories yet</a></li>
                             @endforelse
-                        </ul><!-- End .menu-vertical -->
-                    </nav><!-- End .side-nav -->
-                </div><!-- End .dropdown-menu -->
-            </div><!-- End .category-dropdown -->
-        </div><!-- End .header-left -->
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
 
         <div class="header-center">
             <nav class="main-nav">
@@ -36,13 +48,10 @@
                         <a href="{{ route('home') }}">Home</a>
                     </li>
                     <li>
-                        <a href="#">Shop</a>
-                    </li>
-                    <li>
                         <a href="{{ auth()->check() ? route('cart.index') : route('login') }}">Cart</a>
                     </li>
-                </ul><!-- End .menu -->
-            </nav><!-- End .main-nav -->
-        </div><!-- End .header-center -->
-    </div><!-- End .container -->
-</div><!-- End .header-bottom -->
+                </ul>
+            </nav>
+        </div>
+    </div>
+</div>

@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::get('/cart', fn () => redirect('/'))->name('cart.index');
+Route::post('/cart/add/{product}', fn () => redirect('/'))->name('cart.add');
 Route::get('/category/{category:slug}', [HomeController::class, 'category'])->name('category');
 Route::get('/product/{product}', [HomeController::class, 'product'])->name('product');
 
